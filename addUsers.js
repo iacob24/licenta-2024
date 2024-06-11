@@ -30,7 +30,6 @@ async function createUser(name, username, email, plainPassword, role) {
 }
 
 async function main() {
-  await createUser('Cara Teodora', 'carateodora', 'cara.teodora@yahoo.com', 'Password', 'freelancer');
   await createUser('Andrei Iacob', 'andrei', 'andrei.iacob26@yahoo.com', 'Password123', 'entrepreneur');
 
   // Adaugă mai mulți utilizatori după nevoie
