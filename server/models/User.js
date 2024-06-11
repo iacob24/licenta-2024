@@ -1,3 +1,4 @@
+// models/User.js
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
@@ -5,7 +6,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  username: {  
+  username: {
     type: String,
     required: true,
     unique: true
@@ -21,7 +22,6 @@ const UserSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ['freelancer', 'entrepreneur'],
     required: true
   },
   date: {

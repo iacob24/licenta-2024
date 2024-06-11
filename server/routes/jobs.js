@@ -31,35 +31,34 @@ router.post('/', authenticateToken, async (req, res) => {
   }
 });
 
-module.exports = router;
-
 // Get jobs applied by the user
 router.get('/applied', authenticateToken, async (req, res) => {
   try {
-      const jobs = await Job.find({ appliedUsers: req.user.id });
-      res.json(jobs);
+    const jobs = await Job.find({ appliedUsers: req.user.id });
+    res.json(jobs);
   } catch (err) {
-      res.status(500).json({ message: err.message });
+    res.status(500).json({ message: err.message });
   }
 });
 
 // Get reviewed jobs by the user
 router.get('/reviewed', authenticateToken, async (req, res) => {
   try {
-      const jobs = await Job.find({ reviewedBy: req.user.id });
-      res.json(jobs);
+    const jobs = await Job.find({ reviewedBy: req.user.id });
+    res.json(jobs);
   } catch (err) {
-      res.status(500).json({ message: err.message });
+    res.status(500).json({ message: err.message });
   }
 });
 
 // Get past jobs by the entrepreneur
 router.get('/past', authenticateToken, async (req, res) => {
   try {
-      const jobs = await Job.find({ entrepreneur: req.user.id });
-      res.json(jobs);
+    const jobs = await Job.find({ entrepreneur: req.user.id });
+    res.json(jobs);
   } catch (err) {
-      res.status(500).json({ message: err.message });
+    res.status(500).json({ message: err.message });
   }
 });
 
+module.exports = router;

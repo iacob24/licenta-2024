@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (signupForm) {
+ if (signupForm) {
     signupForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const name = document.getElementById('name').value;
@@ -53,6 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Passwords do not match.');
         return;
       }
+
+      console.log('Form Data:', { name, username, email, password, role }); // Log form data
 
       try {
         const response = await fetch('http://localhost:3001/api/auth/signup', {
@@ -68,44 +70,66 @@ document.addEventListener('DOMContentLoaded', () => {
           window.location.href = 'login.html';
         } else {
           const errorData = await response.json();
+          console.error('Signup failed:', errorData); // Log error data from response
           alert(`Signup failed: ${errorData.message}`);
         }
       } catch (error) {
-        console.error('Error during signup:', error);
+        console.error('Error during signup:', error); // Log detailed error message
         alert('Signup failed.');
       }
     });
   }
 });
 
-
-async function fetchJobs() {
-  try {
-    const response = await fetch('http://localhost:3001/api/jobs');
-    const jobs = await response.json();
-    const jobListings = document.getElementById('job-listings');
-    jobListings.innerHTML = '';
-    jobs.forEach(job => {
-      const jobCard = `
-        <div class="w3-third w3-margin-bottom">
-          <div class="w3-card-4">
-            <div class="w3-container w3-white">
-              <h3>${job.title}</h3>
-              <p class="w3-opacity">${job.company}</p>
-              <p>${job.description}</p>
-              <p><b>Location:</b> ${job.location}</p>
-              <p><b>Salary:</b> $${job.salary}</p>
-              <button class="w3-button w3-block w3-black">Apply</button>
-            </div>
-          </div>
-        </div>
-      `;
-      jobListings.innerHTML += jobCard;
-    });
-  } catch (error) {
-    console.error('Error fetching jobs:', error);
+document.addEventListener('DOMContentLoaded', async () => {
+  async function fetchJobs() {
+      try {
+          const response = await fetch('http://localhost:3001/api/jobs');
+          if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const jobs = await response.json();
+          const jobListings = document.getElementById('job-listings');
+          jobListings.innerHTML = '';
+          
+          jobs.forEach((job, index) => {
+              if (index % 3 === 0) {
+                  jobListings.innerHTML += `<div class="w3-row-padding">`;
+              }
+              jobListings.innerHTML += `
+                  <div class="w3-third w3-margin-bottom">
+                      <div class="w3-card-4">
+                          <div class="w3-container w3-white">
+                              <h3>${job.title}</h3>
+                              <p class="w3-opacity">${job.company}</p>
+                              <p>${job.description}</p>
+                              <p><b>Location:</b> ${job.location}</p>
+                              <p><b>Salary:</b> $${job.salary}</p>
+                              <button class="w3-button w3-block w3-black" onclick="applyJob('${job._id}', '${job.title}', '${job.company}')">Apply</button>
+                          </div>
+                      </div>
+                  </div>
+              `;
+              if (index % 3 === 2 || index === jobs.length - 1) {
+                  jobListings.innerHTML += `</div>`;
+              }
+          });
+      } catch (error) {
+          console.error('Error fetching jobs:', error);
+      }
   }
+
+  fetchJobs();
+});
+
+function applyJob(jobId, jobTitle, jobCompany) {
+  localStorage.setItem('applyJobId', jobId);
+  localStorage.setItem('applyJobTitle', jobTitle);
+  localStorage.setItem('applyJobCompany', jobCompany);
+  window.location.href = 'apply.html';
 }
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const token = localStorage.getItem('token');

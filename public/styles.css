@@ -12,7 +12,7 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 
 #main {
-  margin-left: 140px; /* Adjusted to ensure it does not overlap */
+  margin-left: 140px; 
 }
 
 @media only screen and (max-width: 600px) {
@@ -38,38 +38,12 @@ button.w3-button:hover {
   color: #fff;
 }
 
-/* Chat button */
-.open-button {
-  background-color: #555;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  position: fixed;
-  bottom: 23px;
-  right: 28px;
-  width: 280px;
-}
-
-/* The popup chat - hidden by default */
-.chat-popup {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  right: 15px;
-  border: 3px solid #f1f1f1;
-  z-index: 9;
-}
-
-/* Add styles to the form container */
 .form-container {
   max-width: 300px;
   padding: 10px;
   background-color: white;
 }
 
-/* Full-width textarea */
 .form-container textarea {
   width: 100%;
   padding: 15px;
@@ -80,13 +54,11 @@ button.w3-button:hover {
   min-height: 200px;
 }
 
-/* When the textarea gets focus, do something */
 .form-container textarea:focus {
   background-color: #ddd;
   outline: none;
 }
 
-/* Set a style for the submit/send button */
 .form-container .btn {
   background-color: #4CAF50;
   color: white;
@@ -98,12 +70,125 @@ button.w3-button:hover {
   opacity: 0.8;
 }
 
-/* Add a red background color to the cancel button */
 .form-container .cancel {
   background-color: red;
 }
 
-/* Add some hover effects to buttons */
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
+}
+
+.job-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.w3-card-4 {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.learning-hub-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+.learning-item {
+  flex: 1 1 calc(50% - 20px);
+  margin: 10px;
+  background: #333;
+  padding: 20px;
+  border-radius: 5px;
+}
+.learning-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+.learning-item h4 {
+  color: #fff;
+}
+.learning-item p {
+  color: #bbb;
+}
+.learning-item a {
+  color: #fff;
+  text-decoration: none;
+}
+.learning-item h3 {
+  color: #fff;
+}
+.dashboard-item {
+  margin-bottom: 32px;
+}
+.w3-card-4 {
+  margin-bottom: 16px;
+}
+.learning-item {
+  margin-bottom: 24px;
+}
+.learning-item div {
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: black;
+  margin-bottom: 16px;
+}
+.learning-item h4 {
+  margin: 0 0 8px 0;
+}
+.learning-item p {
+  margin: 0;
+}
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+}
+.upload-form {
+  width: 100%;
+  max-width: 600px;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+.upload-form input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.upload-form button {
+  width: 100%;
+}
+.message {
+  border-bottom: 1px solid #ddd;
+  padding: 8px 0;
+}
+.message:last-child {
+  border-bottom: none;
+}
+.message img {
+  border-radius: 50%;
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+}
+.message-sender {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.message-text {
+  margin: 0;
+}
+.message-form input[type="text"] {
+  width: calc(100% - 50px);
+  display: inline-block;
+  margin-right: 10px;
+}
+.message-form button {
+  width: 40px;
+  padding: 10px;
 }

@@ -7,8 +7,7 @@ const User = require('../models/User');
 
 // Sign Up
 router.post('/signup', async (req, res) => {
-  const { name, username, email, password, role } = req.body; // Verifică acest lucru
-  console.log('Request Body:', req.body); // Adaugă acest log pentru a vedea ce primește serverul
+  const { name, username, email, password, role } = req.body;
   try {
     const userExists = await User.findOne({ email });
     if (userExists) {
@@ -17,7 +16,7 @@ router.post('/signup', async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({
       name,
-      username, // Verifică dacă username este inclus
+      username,
       email,
       password: hashedPassword,
       role
@@ -28,7 +27,6 @@ router.post('/signup', async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
-
 
 // Login
 router.post('/login', async (req, res) => {
@@ -49,8 +47,4 @@ router.post('/login', async (req, res) => {
   }
 });
 
-
-
-
-
-
+module.exports = router;

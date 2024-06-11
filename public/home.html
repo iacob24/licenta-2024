@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>W3.CSS Template</title>
+<title>Freelancer Hub</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -34,6 +34,10 @@
       <i class="fa fa-sign-in w3-xxlarge"></i>
       <p>LOG IN</p>
     </a>
+    <a href="signup.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+      <i class="fa fa-user-plus w3-xxlarge"></i>
+      <p>SIGN UP</p>
+    </a>
   </nav>
   
   <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
@@ -43,6 +47,7 @@
       <a href="browsejobs.html" class="w3-bar-item w3-button" style="width:20% !important">BROWSE JOBS</a>
       <a href="contact.html" class="w3-bar-item w3-button" style="width:20% !important">CONTACT</a>
       <a href="login.html" class="w3-bar-item w3-button" style="width:20% !important">LOG IN</a>
+      <a href="signup.html" class="w3-bar-item w3-button" style="width:20% !important">SIGN UP</a>
     </div>
   </div>
 
@@ -120,7 +125,7 @@
             <span class="w3-opacity">per month</span>
           </li>
           <li class="w3-light-grey w3-padding-24">
-            <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
+            <button onclick="document.location='signup.html'" class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
           </li>
         </ul>
       </div>
@@ -133,11 +138,11 @@
           <li class="w3-padding-16">50GB Storage</li>
           <li class="w3-padding-16">Endless Support</li>
           <li class="w3-padding-16">
-            <h2>$ 25</2>
-            <span class="w3-opacity">per month</span>
-          </li>
+            <h2>$ 25</h2>
+              <span class="w3-opacity">per month</span>
+            </li>
           <li class="w3-light-grey w3-padding-24">
-            <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
+            <button onclick="document.location='signup.html'" class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
           </li>
         </ul>
       </div>
@@ -149,11 +154,11 @@
     <p>John Doe saved us from a web disaster.</p><br>
     
     <img src="images/photo10.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px">
-    <p><span class="w3-large w3-margin-right">Chris Fox.</span> CEO at Mighty Schools.</p>
+    <p><span class="w3-large w3-margin-right">Adrian Iacob.</span> CEO at Mighty Schools.</p>
     <p>John Doe saved us from a web disaster.</p><br>
 
     <img src="images/photo10.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px">
-    <p><span class="w3-large w3-margin-right">Chris Fox.</span> CEO at Mighty Schools.</p>
+    <p><span class="w3-large w3-margin-right">Pizda mea.</span> CEO at Mighty Schools.</p>
     <p>John Doe saved us from a web disaster.</p><br>
   
   <div class="w3-padding-64 w3-content" id="photos">
@@ -210,37 +215,6 @@
     <i class="fa fa-linkedin w3-hover-opacity"></i>
     <p class="w3-medium">Powered by <a href="https://unibuc.ro/" target="_blank" class="w3-hover-text-green">Universitatea Bucuresti</a></p>
   </footer>
-
-<!-- Chat Button -->
-<button class="open-button" onclick="openChat()">Chat</button>
-
-<!-- The Chat Popup -->
-<div class="chat-popup" id="chatForm">
-  <div class="form-container">
-    <h1>Chat with our Bot</h1>
-
-    <iframe
-      width="350"
-      height="430"
-      allow="microphone;"
-      src="YOUR_DIALOGFLOW_WEB_DEMO_URL_HERE">
-    </iframe>
-
-    <button type="button" class="btn cancel" onclick="closeChat()">Close</button>
-  </div>
-</div>
-
-<script>
-  function openChat() {
-    document.getElementById("chatForm").style.display = "block";
-  }
-
-  function closeChat() {
-    document.getElementById("chatForm").style.display = "none";
-  }
-</script>
-
-
 </div>
 
 </body>

@@ -1,27 +1,48 @@
 const express = require('express');
-const multer = require('multer');
 const router = express.Router();
-const authenticateToken = require('../middleware/authenticateToken');
+const multer = require('multer');
+const path = require('path');
 
+// Set up multer for file uploads
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads/');
+        cb(null, path.join(__dirname, '..', 'uploads'));
     },
     filename: function (req, file, cb) {
-        cb(null, `${Date.now()}-${file.originalname}`);
+        cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
     }
 });
 
-const upload = multer({ storage: storage });
+const fileFilter = (req, file, cb) => {
+    const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/zip', 'application/x-rar-compressed'];
+    if (allowedTypes.includes(file.mimetype)) {
+        cb(null, true);
+    } else {
+        cb(new Error('Invalid file type'), false);
+    }
+};
 
-// Upload CV
-router.post('/cv', authenticateToken, upload.single('cv'), (req, res) => {
-    res.status(201).json({ message: 'CV uploaded successfully', file: req.file });
+const upload = multer({
+    storage: storage,
+    fileFilter: fileFilter
 });
 
-// Upload Portfolio
-router.post('/portfolio', authenticateToken, upload.single('portfolio'), (req, res) => {
-    res.status(201).json({ message: 'Portfolio uploaded successfully', file: req.file });
+// Route to handle CV uploads
+router.post('/cv', upload.single('cv'), (req, res) => {
+    if (req.file) {
+        res.status(200).json({ message: 'CV uploaded successfully!', file: req.file });
+    } else {
+        res.status(400).json({ message: 'Failed to upload CV.' });
+    }
+});
+
+// Route to handle Portfolio uploads
+router.post('/portfolio', upload.single('portfolio'), (req, res) => {
+    if (req.file) {
+        res.status(200).json({ message: 'Portfolio uploaded successfully!', file: req.file });
+    } else {
+        res.status(400).json({ message: 'Failed to upload portfolio.' });
+    }
 });
 
 module.exports = router;
