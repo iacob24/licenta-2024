@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Application = require('../models/Application'); // Ensure this path is correct
+const Application = require('../models/Application'); 
 
-// Create a new application
 router.post('/', async (req, res) => {
     const { jobId, applicantName, applicantEmail, coverLetter } = req.body;
     const application = new Application({ jobId, applicantName, applicantEmail, coverLetter });
@@ -15,7 +14,6 @@ router.post('/', async (req, res) => {
     }
 });
 
-// Get all applications
 router.get('/', async (req, res) => {
     try {
         const applications = await Application.find();

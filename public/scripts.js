@@ -19,16 +19,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (response.ok) {
           const data = await response.json();
-          console.log('Login successful! Role:', data.role); // Logging the role
+          console.log('Login successful! Role:', data.role); 
           alert('Login successful!');
           localStorage.setItem('token', data.token);
-          localStorage.setItem('role', data.role); // Store role in localStorage
+          localStorage.setItem('role', data.role); 
           if (data.role === 'freelancer') {
             window.location.href = 'dashboard-freelancer.html';
           } else if (data.role === 'entrepreneur') {
             window.location.href = 'dashboard-entrepreneur.html';
           } else {
-            console.error('Unknown role:', data.role); // Log unknown roles
+            console.error('Unknown role:', data.role); 
           }
         } else {
           alert('Login failed.');
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      console.log('Form Data:', { name, username, email, password, role }); // Log form data
+      console.log('Form Data:', { name, username, email, password, role }); 
 
       try {
         const response = await fetch('http://localhost:3001/api/auth/signup', {
@@ -70,11 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
           window.location.href = 'login.html';
         } else {
           const errorData = await response.json();
-          console.error('Signup failed:', errorData); // Log error data from response
+          console.error('Signup failed:', errorData); 
           alert(`Signup failed: ${errorData.message}`);
         }
       } catch (error) {
-        console.error('Error during signup:', error); // Log detailed error message
+        console.error('Error during signup:', error); 
         alert('Signup failed.');
       }
     });
@@ -393,7 +393,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function fetchEntrepreneurData() {
     try {
-      // Implementați funcționalitățile necesare pentru antreprenori aici
     } catch (error) {
       console.error('Error fetching entrepreneur data:', error);
     }

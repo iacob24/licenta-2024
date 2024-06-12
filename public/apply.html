@@ -93,15 +93,12 @@
     <p class="w3-medium">Contact us: info@freelancerhub.com</p>
 </footer>
 
-<!-- Apply for Job HTML code remains the same -->
 <script src="scripts.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    // Prefill job information
     document.getElementById('jobTitle').value = localStorage.getItem('applyJobTitle');
     document.getElementById('jobCompany').value = localStorage.getItem('applyJobCompany');
 
-    // Handle form submission
     document.getElementById('applyForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         const jobId = localStorage.getItem('applyJobId');

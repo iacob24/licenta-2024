@@ -3,7 +3,6 @@ const router = express.Router();
 const Job = require('../models/Job');
 const authenticateToken = require('../middleware/authenticateToken');
 
-// Get all jobs
 router.get('/', async (req, res) => {
   try {
     const jobs = await Job.find();
@@ -13,7 +12,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Create a new job (protected route)
 router.post('/', authenticateToken, async (req, res) => {
   const job = new Job({
     title: req.body.title,
@@ -31,7 +29,6 @@ router.post('/', authenticateToken, async (req, res) => {
   }
 });
 
-// Get jobs applied by the user
 router.get('/applied', authenticateToken, async (req, res) => {
   try {
     const jobs = await Job.find({ appliedUsers: req.user.id });
@@ -41,7 +38,6 @@ router.get('/applied', authenticateToken, async (req, res) => {
   }
 });
 
-// Get reviewed jobs by the user
 router.get('/reviewed', authenticateToken, async (req, res) => {
   try {
     const jobs = await Job.find({ reviewedBy: req.user.id });
@@ -51,7 +47,6 @@ router.get('/reviewed', authenticateToken, async (req, res) => {
   }
 });
 
-// Get past jobs by the entrepreneur
 router.get('/past', authenticateToken, async (req, res) => {
   try {
     const jobs = await Job.find({ entrepreneur: req.user.id });

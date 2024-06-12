@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/User'); // Asigură-te că această cale este corectă
+const User = require('../models/User'); 
 
-// Edit Profile
 router.put('/edit', async (req, res) => {
     const { userId, name, email, bio } = req.body;
     try {
@@ -21,7 +20,6 @@ router.put('/edit', async (req, res) => {
     }
 });
 
-// Upload Logo
 router.post('/upload-logo', async (req, res) => {
     const { userId, logo } = req.body;
     try {
@@ -38,7 +36,6 @@ router.post('/upload-logo', async (req, res) => {
     }
 });
 
-// Update Contact Info
 router.put('/update-contact', async (req, res) => {
     const { userId, contactInfo } = req.body;
     try {

@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Project = require('../models/Project'); // Ensure this path is correct
+const Project = require('../models/Project'); 
 
-// Create a new project
 router.post('/', async (req, res) => {
     const { title, description, skills, budget, deadline } = req.body;
     const project = new Project({ title, description, skills, budget, deadline });
@@ -15,7 +14,6 @@ router.post('/', async (req, res) => {
     }
 });
 
-// GET /api/projects - Get all projects
 router.get('/', async (req, res) => {
   try {
     const projects = await Project.find();

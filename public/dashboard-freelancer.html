@@ -24,7 +24,7 @@
     .message {
         border-bottom: 1px solid #ddd;
         padding: 8px 0;
-        padding-left: 10px; /* Adjust this value to move text to the left */
+        padding-left: 10px; 
     }
     .message:last-child {
         border-bottom: none;
@@ -248,7 +248,6 @@
 
 <script src="scripts.js"></script>
 <script>
-  // Example data for demonstration purposes
   const exampleAppliedJobs = [
     { title: 'Front-End Developer', company: 'Tech Solutions', description: 'Developing and maintaining the front end of a website.' },
     { title: 'Back-End Developer', company: 'Innovative Systems', description: 'Developing and maintaining the back end of a website.' },
@@ -273,7 +272,6 @@
     { title: 'Daniel Petrescu', company: 'Moloso Marketing' }
   ];
 
-  // Function to populate Jobs Applied section
   function populateJobsApplied() {
     const jobsAppliedUl = document.getElementById('jobsApplied');
     jobsAppliedUl.innerHTML = '';
@@ -284,7 +282,6 @@
     });
   }
 
-  // Function to populate Jobs Reviewed section
   function populateJobsReviewed() {
     const jobsReviewedUl = document.getElementById('jobsReviewed');
     jobsReviewedUl.innerHTML = '';
@@ -295,7 +292,6 @@
     });
   }
 
-  // Function to populate Past Clients section
   function populatePastClients() {
     const pastClientsUl = document.getElementById('pastClients');
     pastClientsUl.innerHTML = '';
@@ -306,7 +302,6 @@
     });
   }
 
-  // Call functions to populate sections
   populateJobsApplied();
   populateJobsReviewed();
   populatePastClients();

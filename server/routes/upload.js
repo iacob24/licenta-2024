@@ -3,7 +3,6 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 
-// Set up multer for file uploads
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, path.join(__dirname, '..', 'uploads'));
@@ -27,7 +26,6 @@ const upload = multer({
     fileFilter: fileFilter
 });
 
-// Route to handle CV uploads
 router.post('/cv', upload.single('cv'), (req, res) => {
     if (req.file) {
         res.status(200).json({ message: 'CV uploaded successfully!', file: req.file });
@@ -36,7 +34,6 @@ router.post('/cv', upload.single('cv'), (req, res) => {
     }
 });
 
-// Route to handle Portfolio uploads
 router.post('/portfolio', upload.single('portfolio'), (req, res) => {
     if (req.file) {
         res.status(200).json({ message: 'Portfolio uploaded successfully!', file: req.file });
