@@ -3,14 +3,15 @@ const router = express.Router();
 const Job = require('../models/Job');
 const authenticateToken = require('../middleware/authenticateToken');
 
-<<<<<<< HEAD
 router.get('/', async (req, res) => {
   try {
     const jobs = await Job.find();
     res.json(jobs);
   } catch (err) {
     res.status(500).json({ message: err.message });
-=======
+  }
+});
+
 router.get('/api/jobs', async (req, res) => {
   try {
       const { salary, location } = req.query;
@@ -25,7 +26,6 @@ router.get('/api/jobs', async (req, res) => {
       res.json(jobs);
   } catch (err) {
       res.status(500).json({ message: err.message });
->>>>>>> 3541395 (Updated filtering)
   }
 });
 

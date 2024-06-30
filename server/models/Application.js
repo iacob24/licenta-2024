@@ -6,8 +6,7 @@ const ApplicationSchema = new mongoose.Schema({
     ref: 'Job',
     required: true
   },
-<<<<<<< HEAD
-=======
+
   jobTitle: {
     type: String,
     required: true
@@ -16,7 +15,6 @@ const ApplicationSchema = new mongoose.Schema({
     type: String,
     required: true
   },
->>>>>>> 3541395 (Updated filtering)
   applicantName: {
     type: String,
     required: true

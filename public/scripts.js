@@ -82,8 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', async () => {
-<<<<<<< HEAD
-=======
   const filterForm = document.getElementById('filterForm');
 
   filterForm.addEventListener('submit', (e) => {
@@ -142,7 +140,6 @@ async function loadJobs() {
 
 
 document.addEventListener('DOMContentLoaded', async () => {
->>>>>>> 3541395 (Updated filtering)
   async function fetchJobs() {
       try {
           const response = await fetch('http://localhost:3001/api/jobs');
