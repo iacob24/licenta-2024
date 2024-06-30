@@ -1,10 +1,19 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3541395 (Updated filtering)
 const express = require('express');
 const router = express.Router();
 const Application = require('../models/Application'); 
 
 router.post('/', async (req, res) => {
+<<<<<<< HEAD
     const { jobId, applicantName, applicantEmail, coverLetter } = req.body;
     const application = new Application({ jobId, applicantName, applicantEmail, coverLetter });
+=======
+    const { jobId, jobTitle, jobCompany, applicantName, applicantEmail, coverLetter } = req.body;
+    const application = new Application({ jobId, jobTitle, jobCompany, applicantName, applicantEmail, coverLetter });
+>>>>>>> 3541395 (Updated filtering)
 
     try {
         const newApplication = await application.save();

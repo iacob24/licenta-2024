@@ -82,6 +82,67 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', async () => {
+<<<<<<< HEAD
+=======
+  const filterForm = document.getElementById('filterForm');
+
+  filterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      loadJobs();
+  });
+
+  loadJobs(); // Initial load without filters
+});
+
+async function loadJobs() {
+  try {
+      const salary = document.getElementById('filterSalary').value;
+      const location = document.getElementById('filterLocation').value;
+
+      let url = 'http://localhost:3001/api/jobs';
+      const params = new URLSearchParams();
+      if (salary) {
+          params.append('salary', salary);
+      }
+      if (location) {
+          params.append('location', location);
+      }
+      if (params.toString()) {
+          url += `?${params.toString()}`;
+      }
+
+      const response = await fetch(url);
+      const jobs = await response.json();
+
+      const jobListings = document.getElementById('job-listings');
+      jobListings.innerHTML = '';
+
+      jobs.forEach(job => {
+          const jobElement = document.createElement('div');
+          jobElement.className = 'w3-quarter w3-margin-bottom';
+          jobElement.innerHTML = `
+              <div class="w3-card-4 w3-white">
+                  <div class="w3-container">
+                      <h3>${job.title}</h3>
+                      <p>${job.company}</p>
+                      <p>$${job.salary !== undefined ? job.salary : 'N/A'}</p>
+                      <p>${job.location}</p>
+                      <button class="w3-button w3-blue w3-margin-bottom">Apply</button>
+                  </div>
+              </div>
+          `;
+          jobListings.appendChild(jobElement);
+      });
+  } catch (error) {
+      console.error('Error fetching jobs:', error);
+  }
+}
+
+
+
+
+document.addEventListener('DOMContentLoaded', async () => {
+>>>>>>> 3541395 (Updated filtering)
   async function fetchJobs() {
       try {
           const response = await fetch('http://localhost:3001/api/jobs');

@@ -13,7 +13,11 @@
 
   <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
     <img src="images/logo.png" style="width:100%">
+<<<<<<< HEAD
     <a href="home.html" class="w3-bar-item w3-button w3-padding-large w3-black">
+=======
+    <a href="home.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+>>>>>>> 3541395 (Updated filtering)
       <i class="fa fa-home w3-xxlarge"></i>
       <p>HOME</p>
     </a>
@@ -29,6 +33,7 @@
       <i class="fa fa-envelope w3-xxlarge"></i>
       <p>CONTACT</p>
     </a>
+<<<<<<< HEAD
     <a href="login.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
       <i class="fa fa-sign-in w3-xxlarge"></i>
       <p>LOG IN</p>
@@ -37,6 +42,8 @@
       <i class="fa fa-user-plus w3-xxlarge"></i>
       <p>SIGN UP</p>
     </a>
+=======
+>>>>>>> 3541395 (Updated filtering)
   </nav>
   
   <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
@@ -45,6 +52,7 @@
       <a href="about.html" class="w3-bar-item w3-button" style="width:20% !important">ABOUT US</a>
       <a href="browsejobs.html" class="w3-bar-item w3-button" style="width:20% !important">BROWSE JOBS</a>
       <a href="contact.html" class="w3-bar-item w3-button" style="width:20% !important">CONTACT</a>
+<<<<<<< HEAD
       <a href="login.html" class="w3-bar-item w3-button" style="width:20% !important">LOG IN</a>
       <a href="signup.html" class="w3-bar-item w3-button" style="width:20% !important">SIGN UP</a>
     </div>
@@ -59,6 +67,48 @@
   <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="browsejobs">
     <h2 class="w3-text-light-grey">Available Jobs</h2>
     <hr style="width:200px" class="w3-opacity">
+=======
+    </div>
+  </div>
+    <div class="w3-padding-large" id="main">
+      <header class="w3-container w3-padding-32 w3-center w3-black">
+        <h1 class="w3-jumbo">Browse Jobs</h1>
+        <p>Find the best freelance jobs that suit your skills.</p>
+      </header>
+    
+      <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="browsejobs">
+        <h2 class="w3-text-light-grey">Available Jobs</h2>
+        <hr style="width:200px" class="w3-opacity">        
+        <div class="w3-container w3-padding-16">
+          <form id="filterForm" class="w3-container w3-card-4 w3-white w3-padding-16">
+            <div class="w3-section">
+              <label>Salary</label>
+              <select class="w3-select" id="filterSalary" name="salary">
+                <option value="" disabled selected>Choose your salary range</option>
+                <option value="48000">Up to $48000</option>
+                <option value="60000">Up to $60000</option>
+                <option value="70000">Up to $70000</option>
+                <option value="80000">Up to $80000</option>
+            </select>
+          <div class="w3-section">
+            <label>Location</label>
+            <select class="w3-select" id="filterLocation" name="location">
+                <option value="" disabled selected>Choose your location</option>
+                <option value="CA">CA</option>
+                <option value="NY">NY</option>
+                <option value="IL">IL</option>
+                <option value="Remote">Remote</option>
+            </select>
+        </div>
+          <button type="submit" class="w3-button w3-blue">Filter</button>
+          </form>
+          </div>        
+        
+        <div id="job-listings" class="w3-row-padding w3-center">
+        </div>
+      </div>
+    </div>    
+>>>>>>> 3541395 (Updated filtering)
     <div id="job-listings" class="w3-row-padding w3-center">
     </div>
   </div>
