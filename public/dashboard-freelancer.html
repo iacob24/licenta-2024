@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Freelancer Dashboard - Freelancer Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .dashboard-item {
+            margin-bottom: 32px;
+        }
+        .w3-card-4 {
+            margin-bottom: 16px;
+        }
+    .dashboard-item {
+        margin-bottom: 32px;
+    }
+    .w3-card-4 {
+        margin-bottom: 16px;
+    }
+    .message {
+        border-bottom: 1px solid #ddd;
+        padding: 8px 0;
+        padding-left: 10px; 
+    }
+    .message:last-child {
+        border-bottom: none;
+    }
+    .message img {
+        border-radius: 50%;
+        margin-right: 10px;
+        width: 40px;
+        height: 40px;
+    }
+    .message-sender {
+        font-weight: bold;
+        margin-bottom: 4px;
+    }
+    .message-text {
+        margin: 0;
+    }
+    .message-form input[type="text"] {
+        width: calc(100% - 50px);
+        display: inline-block;
+        margin-right: 10px;
+    }
+    .message-form button {
+        width: 40px;
+        padding: 10px;
+    }
+</style>
+
+    </style>
+</head>
+<body class="w3-black">
+
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+  <img src="images/logo.png" style="width:100%">
+  <a href="home.html" class="w3-bar-item w3-button w3-padding-large w3-black">
+  <a href="home.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-home w3-xxlarge"></i>
+    <p>HOME</p>
+  </a>
+  <a href="about.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-user w3-xxlarge"></i>
+    <p>ABOUT US</p>
+  </a>
+  <a href="browsejobs.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-eye w3-xxlarge"></i>
+    <p>BROWSE JOBS</p>
+  </a>
+  <a href="contact.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-envelope w3-xxlarge"></i>
+    <p>CONTACT</p>
+  </a>
+  <a href="dashboard-entrepreneur.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-dashboard w3-xxlarge"></i>
+    <p>SWITCH ROLE</p>
+  </a>
+</nav>
+
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a href="home.html" class="w3-bar-item w3-button" style="width:20% !important">HOME</a>
+    <a href="about.html" class="w3-bar-item w3-button" style="width:20% !important">ABOUT US</a>
+    <a href="browsejobs.html" class="w3-bar-item w3-button" style="width:20% !important">BROWSE JOBS</a>
+    <a href="contact.html" class="w3-bar-item w3-button" style="width:20% !important">CONTACT</a>
+    <a href="dashboard-entrepreneur.html" class="w3-bar-item w3-button" style="width:20% !important">SWITCH ROLE</a>
+  </div>
+</div>
+
+<div class="w3-padding-large" id="main">
+  <header class="w3-container w3-padding-32 w3-center w3-black">
+    <h1 class="w3-jumbo">Freelancer Dashboard</h1>
+    <p>Manage your freelancer account and activities.</p>
+  </header>
+
+  <div class="w3-content w3-justify w3-text-grey w3-padding-64">
+    <section class="dashboard-item">
+      <h2 class="w3-text-light-grey">Messages</h2>
+      <div id="messages" class="w3-white w3-padding-16">
+          <div id="message-list">
+              <div class="message">
+                  <img src="images/user1.png" alt="User 1">
+                  <div>
+                      <div class="message-sender">John Doe</div>
+                      <p class="message-text">Hello, I have a question about the project.</p>
+                  </div>
+              </div>
+              <div class="message">
+                  <img src="images/user2.png" alt="User 2">
+                  <div>
+                      <div class="message-sender">Jane Smith</div>
+                      <p class="message-text">Can you provide an update on the status?</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </section>
+
+    <section class="dashboard-item">
+        <h2 class="w3-text-light-grey">Jobs Applied</h2>
+        <ul id="jobsApplied" class="w3-white w3-padding-16">Loading jobs...</ul>
+    </section>
+
+    <section class="dashboard-item">
+        <h2 class="w3-text-light-grey">Jobs Reviewed</h2>
+        <ul id="jobsReviewed" class="w3-white w3-padding-16">Loading reviews...</ul>
+    </section>
+
+    <section class="dashboard-item">
+        <h2 class="w3-text-light-grey">Past Clients</h2>
+        <ul id="pastClients" class="w3-white w3-padding-16">Loading client list...</ul>
+    </section>
+
+    <section class="dashboard-item">
+      <h2 class="w3-text-light-grey">Manage CV and Portfolio</h2>
+      <div id="cvPortfolio" class="w3-white w3-padding-16 upload-section">
+          <form id="uploadCVForm" class="upload-form" enctype="multipart/form-data">
+              <h3>Upload CV</h3>
+              <input type="file" name="cv" id="cvFile" accept=".pdf, .doc, .docx" required>
+              <button class="w3-button w3-blue w3-padding-large" type="submit">Upload CV</button>
+              <p id="cvUploadStatus"></p>
+          </form>
+          <form id="uploadPortfolioForm" class="upload-form" enctype="multipart/form-data">
+              <h3>Upload Portfolio</h3>
+              <input type="file" name="portfolio" id="portfolioFile" accept=".pdf, .zip, .rar" required>
+              <button class="w3-button w3-green w3-padding-large" type="submit">Upload Portfolio</button>
+              <p id="portfolioUploadStatus"></p>
+          </form>
+      </div>
+    </section>
+
+    <section class="dashboard-item">
+      <h2 class="w3-text-light-grey">Learning Hub</h2>
+      <div id="learningHub" class="w3-white w3-padding-16 learning-hub-section">
+          <div class="learning-item">
+              <h3>Video Tutorials</h3>
+              <div>
+                  <img src="https://img.youtube.com/vi/Q33KBiDriJY/0.jpg" alt="HTML and CSS Crash Course">
+                  <h4><a href="https://www.youtube.com/watch?v=Q33KBiDriJY" target="_blank">HTML and CSS Crash Course</a></h4>
+              </div>
+              <div>
+                  <img src="https://img.youtube.com/vi/-cMqr9HpZ-Y/0.jpg" alt="JavaScript Full Course">
+                  <h4><a href="https://www.youtube.com/watch?v=-cMqr9HpZ-Y" target="_blank">JavaScript Full Course</a></h4>
+              </div>
+              <div>
+                  <img src="https://img.youtube.com/vi/8aGhZQkoFbQ/0.jpg" alt="React JS Tutorial">
+                  <h4><a href="https://www.youtube.com/watch?v=8aGhZQkoFbQ" target="_blank">React JS Tutorial</a></h4>
+              </div>
+              <div>
+                  <img src="https://img.youtube.com/vi/Oe421EPjeBE/0.jpg" alt="Node.js Tutorial for Beginners">
+                  <h4><a href="https://www.youtube.com/watch?v=Oe421EPjeBE" target="_blank">Node.js Tutorial for Beginners</a></h4>
+              </div>
+          </div>
+          <div class="learning-item">
+            <h3>Articles</h3>
+            <div class="learning-item">
+                <h4><a href="https://www.smashingmagazine.com/2018/01/understanding-using-rest-api/" target="_blank">Understanding and Using REST APIs</a></h4>
+                <p>A comprehensive guide to understanding and using REST APIs effectively.</p>
+            </div>
+            <div class="learning-item">
+                <h4><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">A Guide to Flexbox</a></h4>
+                <p>An in-depth guide to using Flexbox for responsive web design.</p>
+            </div>
+            <div class="learning-item">
+                <h4><a href="https://www.digitalocean.com/community/tutorial_series/how-to-code-in-javascript" target="_blank">How to Code in JavaScript</a></h4>
+                <p>A tutorial series on how to code in JavaScript, covering basic to advanced topics.</p>
+            </div>
+            <div class="learning-item">
+                <h4><a href="https://www.mongodb.com/developer/how-to/learn-mongodb/" target="_blank">Learn MongoDB</a></h4>
+                <p>Learn how to use MongoDB, a popular NoSQL database.</p>
+            </div>
+            <div class="learning-item">
+                <h4><a href="https://www.freecodecamp.org/news/what-is-node-js/" target="_blank">What is Node.js?</a></h4>
+                <p>An introduction to Node.js, its features, and how it works.</p>
+            </div>
+            <div class="learning-item">
+                <h4><a href="https://www.taniarascia.com/getting-started-with-react/" target="_blank">Getting Started with React</a></h4>
+                <p>A beginner's guide to building applications with React.js.</p>
+            </div>
+            <div class="learning-item">
+                <h4><a href="https://www.codecademy.com/learn/paths/web-development" target="_blank">Web Development Path</a></h4>
+                <p>A comprehensive learning path to become a web developer.</p>
+            </div>
+            <div class="learning-item">
+                <h4><a href="https://www.udemy.com/course/modern-javascript-from-the-beginning/" target="_blank">Modern JavaScript From The Beginning</a></h4>
+                <p>A course that teaches modern JavaScript from the ground up.</p>
+            </div>
+            <div class="learning-item">
+              <h4><a href="https://www.udemy.com/course/modern-javascript-from-the-beginning/" target="_blank">What is Node.js?</a></h4>
+              <p>A course that teaches modern JavaScript from the ground up.</p>
+          </div>
+          <div class="learning-item">
+            <h4><a href="https://www.udemy.com/course/modern-javascript-from-the-beginning/" target="_blank">Modern JavaScript From The Beginning</a></h4>
+            <p>A course that teaches modern JavaScript from the ground up.</p>
+        </div>
+        <div class="learning-item">
+          <h4><a href="https://www.udemy.com/course/modern-javascript-from-the-beginning/" target="_blank">Getting Started with React</a></h4>
+          <p>A course that teaches modern JavaScript from the ground up.</p>
+      </div>
+        </div>
+    </div>
+</section>
+
+  </div>
+
+  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+    <p class="w3-medium">Contact us: info@freelancerhub.com</p>
+  </footer>
+</div>
+
+<script src="scripts.js"></script>
+<script>
+  const exampleAppliedJobs = [
+    { title: 'Front-End Developer', company: 'Tech Solutions', description: 'Developing and maintaining the front end of a website.' },
+    { title: 'Back-End Developer', company: 'Innovative Systems', description: 'Developing and maintaining the back end of a website.' },
+    { title: 'WordPress Developer', company: 'StartUp Systems', description: 'Developing and maintaining a website using WordPress.' }
+  ];
+
+  const exampleReviewedJobs = [
+    { title: 'Full-Stack Developer', status: 'Reviewed' },
+    { title: 'Front-End Developer', status: 'Reviewed' },
+    { title: 'React Developer', status: 'Reviewed' },
+  ];
+
+  const examplePastClients = [
+    { title: 'Marius Popa', company: 'Developers Agency' },
+    { title: 'Razvan Ene', company: 'Finance Corp' },
+    { title: 'George Pop', company: 'SmartBill' },
+    { title: 'Universitatea Bucuresti', company: 'Universitatea Bucuresti' },
+    { title: 'Mega Image', company: 'Mega Image' },
+    { title: 'Elena Dumitrescu', company: 'Delloite' },
+    { title: 'Luminita Busu', company: 'Regina Maria' },
+    { title: 'Iustin Mogos', company: 'Sanador' },
+    { title: 'Daniel Petrescu', company: 'Moloso Marketing' }
+  ];
+
+  function populateJobsApplied() {
+    const jobsAppliedUl = document.getElementById('jobsApplied');
+    jobsAppliedUl.innerHTML = '';
+    exampleAppliedJobs.forEach(job => {
+      const jobElement = document.createElement('li');
+      jobElement.textContent = `${job.title} at ${job.company} - ${job.description}`;
+      jobsAppliedUl.appendChild(jobElement);
+    });
+  }
+
+  function populateJobsReviewed() {
+    const jobsReviewedUl = document.getElementById('jobsReviewed');
+    jobsReviewedUl.innerHTML = '';
+    exampleReviewedJobs.forEach(job => {
+      const jobElement = document.createElement('li');
+      jobElement.textContent = `${job.title} - Status: ${job.status}`;
+      jobsReviewedUl.appendChild(jobElement);
+    });
+  }
+
+  function populatePastClients() {
+    const pastClientsUl = document.getElementById('pastClients');
+    pastClientsUl.innerHTML = '';
+    examplePastClients.forEach(job => {
+      const jobElement = document.createElement('li');
+      jobElement.textContent = `${job.title} at ${job.company}`;
+      pastClientsUl.appendChild(jobElement);
+    });
+  }
+
+  populateJobsApplied();
+  populateJobsReviewed();
+  populatePastClients();
+
+  document.getElementById('uploadCVForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    const cvFile = document.getElementById('cvFile').files[0];
+    formData.append('cv', cvFile);
+    const cvUploadStatus = document.getElementById('cvUploadStatus');
+
+    try {
+        const response = await fetch('http://localhost:3001/api/upload/cv', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+            cvUploadStatus.textContent = 'CV uploaded successfully!';
+            cvUploadStatus.style.color = 'green';
+        } else {
+            cvUploadStatus.textContent = `Failed to upload CV: ${result.message}`;
+            cvUploadStatus.style.color = 'red';
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        cvUploadStatus.textContent = 'Failed to upload CV.';
+        cvUploadStatus.style.color = 'red';
+    }
+});
+
+document.getElementById('uploadPortfolioForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    const portfolioFile = document.getElementById('portfolioFile').files[0];
+    formData.append('portfolio', portfolioFile);
+    const portfolioUploadStatus = document.getElementById('portfolioUploadStatus');
+
+    try {
+        const response = await fetch('http://localhost:3001/api/upload/portfolio', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+            portfolioUploadStatus.textContent = 'Portfolio uploaded successfully!';
+            portfolioUploadStatus.style.color = 'green';
+        } else {
+            portfolioUploadStatus.textContent = `Failed to upload portfolio: ${result.message}`;
+            portfolioUploadStatus.style.color = 'red';
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        portfolioUploadStatus.textContent = 'Failed to upload portfolio.';
+        portfolioUploadStatus.style.color = 'red';
+    }
+});
+
+</script>
+</body>
+</html>

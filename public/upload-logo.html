@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Logo - Freelancer Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="w3-black">
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+    <img src="images/logo.png" style="width:100%">
+    <a href="home.html" class="w3-bar-item w3-button w3-padding-large w3-black">
+    <a href="home.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-home w3-xxlarge"></i>
+        <p>HOME</p>
+    </a>
+    <a href="about.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-user w3-xxlarge"></i>
+        <p>ABOUT US</p>
+    </a>
+    <a href="browsejobs.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-eye w3-xxlarge"></i>
+        <p>BROWSE JOBS</p>
+    </a>
+    <a href="contact.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-envelope w3-xxlarge"></i>
+        <p>CONTACT</p>
+    </a>
+    <a href="dashboard-entrepreneur.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-dashboard w3-xxlarge"></i>
+        <p>DASHBOARD</p>
+    </a>
+</nav>
+
+<div class="w3-padding-large" id="main">
+    <header class="w3-container w3-padding-32 w3-center w3-black">
+        <h1 class="w3-jumbo">Upload Logo</h1>
+    </header>
+    <div class="w3-content w3-justify w3-text-grey w3-padding-64">
+        <form id="uploadLogoForm" class="w3-container w3-card-4 w3-white w3-padding-16" enctype="multipart/form-data">
+            <div class="w3-section">
+                <label>Logo</label>
+                <input class="w3-input" type="file" id="logoFile" required>
+            </div>
+            <button class="w3-button w3-blue w3-padding-large w3-margin-bottom" type="submit">Upload Logo</button>
+        </form>
+    </div>
+</div>
+<script>
+    document.getElementById('uploadLogoForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const userId = localStorage.getItem('userId');
+        const formData = new FormData();
+        formData.append('userId', userId);
+        formData.append('logo', document.getElementById('logoFile').files[0]);
+
+        try {
+            const response = await fetch('http://localhost:3001/api/profile/upload-logo', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+                body: formData
+            });
+
+            if (response.ok) {
+                alert('Logo uploaded successfully!');
+            } else {
+                const errorData = await response.json();
+                alert(`Failed to upload logo: ${errorData.message}`);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Failed to upload logo.');
+        }
+    });
+</script>
+</body>
+</html>

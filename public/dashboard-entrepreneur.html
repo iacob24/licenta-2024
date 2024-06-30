@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Entrepreneur Dashboard - Freelancer Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .project-list ul, .application-list ul, .message-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .project-list li, .application-list li, .message-list li {
+            border: 1px solid #ddd;
+            padding: 16px;
+            margin-bottom: 8px;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+    .dashboard-item {
+        margin-bottom: 32px;
+    }
+    .w3-card-4 {
+        margin-bottom: 16px;
+    }
+    .message {
+        border-bottom: 1px solid #ddd;
+        padding: 8px 0;
+        padding-left: 10px; 
+    }
+    .message:last-child {
+        border-bottom: none;
+    }
+    .message img {
+        border-radius: 50%;
+        margin-right: 10px;
+        width: 40px;
+        height: 40px;
+    }
+    .message-sender {
+        font-weight: bold;
+        margin-bottom: 4px;
+    }
+    .message-text {
+        margin: 0;
+    }
+    .message-form input[type="text"] {
+        width: calc(100% - 50px);
+        display: inline-block;
+        margin-right: 10px;
+    }
+    .message-form button {
+        width: 40px;
+        padding: 10px;
+    }
+</style>
+</head>
+<body class="w3-black">
+
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+  <img src="images/logo.png" style="width:100%">
+  <a href="home.html" class="w3-bar-item w3-button w3-padding-large w3-black">
+  <a href="home.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-home w3-xxlarge"></i>
+    <p>HOME</p>
+  </a>
+  <a href="about.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-user w3-xxlarge"></i>
+    <p>ABOUT US</p>
+  </a>
+  <a href="browsejobs.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-eye w3-xxlarge"></i>
+    <p>BROWSE JOBS</p>
+  </a>
+  <a href="contact.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-envelope w3-xxlarge"></i>
+    <p>CONTACT</p>
+  </a>
+  <a href="dashboard-freelancer.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-dashboard w3-xxlarge"></i>
+    <p>SWITCH ROLE</p>
+  </a>
+</nav>
+
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a href="home.html" class="w3-bar-item w3-button" style="width:20% !important">HOME</a>
+    <a href="about.html" class="w3-bar-item w3-button" style="width:20% !important">ABOUT US</a>
+    <a href="browsejobs.html" class="w3-bar-item w3-button" style="width:20% !important">BROWSE JOBS</a>
+    <a href="contact.html" class="w3-bar-item w3-button" style="width:20% !important">CONTACT</a>
+    <a href="dashboard-freelancer.html" class="w3-bar-item w3-button" style="width:20% !important">SWITCH ROLE</a>
+  </div>
+</div>
+
+<div class="w3-padding-large" id="main">
+  <header class="w3-container w3-padding-32 w3-center w3-black">
+    <h1 class="w3-jumbo">Entrepreneur Dashboard</h1>
+    <p>Manage your entrepreneur account and activities.</p>
+  </header>
+
+  <div class="w3-content w3-justify w3-text-grey w3-padding-64">
+    <section class="dashboard-item">
+      <h2 class="w3-text-light-grey">Overview</h2>
+      <div class="w3-white w3-padding-16">
+          <p>Total Applicants: 20</p>
+          <p>Total Applicants: 1</p>
+          <p>Ongoing Projects: 3</p>
+          <p>Completed Projects: 5</p>
+      </div>
+    </section>
+
+    <section class="dashboard-item">
+      <h2 class="w3-text-light-grey">Projects</h2>
+      <div class="project-list w3-white w3-padding-16">
+          <ul id="projectList">
+
+          </ul>
+          <button onclick="document.location='create-project.html'" class="w3-button w3-blue w3-padding-large">Create New Project</button>
+      </div>
+    </section>
+
+    <section class="dashboard-item">
+      <h2 class="w3-text-light-grey">Applications</h2>
+      <div class="application-list w3-white w3-padding-16">
+          <ul id="applicationsList">
+          </ul>
+      </div>
+  </section>
+
+    <section class="dashboard-item">
+      <h2 class="w3-text-light-grey">Messages</h2>
+      <div id="messages" class="w3-white w3-padding-16">
+          <div id="message-list">
+              <div class="message">
+                  <img src="images/user1.png" alt="User 1">
+                  <div>
+                      <div class="message-sender">John Doe</div>
+                      <p class="message-text">Hello, I have a question about the project.</p>
+                  </div>
+              </div>
+              <div class="message">
+                  <img src="images/user2.png" alt="User 2">
+                  <div>
+                      <div class="message-sender">Jane Smith</div>
+                      <p class="message-text">Can you provide an update on the status?</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </section>  
+
+    <section class="dashboard-item">
+      <h2 class="w3-text-light-grey">Profile Management</h2>
+      <div class="w3-white w3-padding-16">
+          <button class="w3-button w3-green w3-padding-large" onclick="document.location='edit-profile.html'">Edit Profile</button>
+          <button class="w3-button w3-blue w3-padding-large" onclick="document.location='upload-logo.html'">Upload Logo</button>
+          <button class="w3-button w3-orange w3-padding-large" onclick="document.location='update-contact.html'">Update Contact Info</button>
+      </div>
+    </section>
+    
+
+    <section class="dashboard-item">
+      <h2 class="w3-text-light-grey">Payments</h2>
+      <div class="w3-white w3-padding-16">
+          <p>Recent Payments</p>
+          <ul>
+              <li>Payment 1 - $500</li>
+              <li>Payment 2 - $300</li>
+              <li>Payment 3 - $700</li>
+          </ul>
+          <button class="w3-button w3-blue w3-padding-large">Make New Payment</button>
+      </div>
+    </section>
+
+    <section class="dashboard-item">
+      <h2 class="w3-text-light-grey">Analytics</h2>
+      <div class="w3-white w3-padding-16">
+          <p>Project Performance</p>
+          <img src="images/analytics-chart.png" alt="Analytics Chart" style="width:100%">
+      </div>
+    </section>
+
+    <section class="dashboard-item">
+      <h2 class="w3-text-light-grey">Learning Hub</h2>
+      <div id="learningHub" class="w3-white w3-padding-16 learning-hub-section">
+        <div class="learning-item">
+          <h3>Video Tutorials</h3>
+          <div>
+            <img src="https://img.youtube.com/vi/QoAOzMTLP5s/0.jpg" alt="Business Model Canvas Explained">
+            <h4><a href="https://www.youtube.com/watch?v=QoAOzMTLP5s&ab_channel=Strategyzer" target="_blank">Business Model Canvas Explained</a></h4>
+            <p>Learn how to use the Business Model Canvas to map out your business ideas.</p>
+          </div>
+          <div>
+            <img src="https://img.youtube.com/vi/677ZtSMr4-4/0.jpg" alt="How to Start a Business in 2023">
+            <h4><a href="https://www.youtube.com/watch?v=677ZtSMr4-4&ab_channel=TheRestOfUs" target="_blank">How to Start a Business in 2023</a></h4>
+            <p>A comprehensive guide on starting a business in the current year.</p>
+          </div>
+          <div>
+            <img src="https://img.youtube.com/vi/5GXx5c53c5s/0.jpg" alt="Pitch Deck Examples">
+            <h4><a href="https://www.youtube.com/watch?v=5GXx5c53c5s&ab_channel=Slidebean" target="_blank">Pitch Deck Examples</a></h4>
+            <p>Examples and tips on creating effective pitch decks.</p>
+          </div>
+          <div>
+            <img src="https://img.youtube.com/vi/3yiHZWr6Izc/0.jpg" alt="How to Build a Personal Brand">
+            <h4><a href="https://www.youtube.com/watch?v=3yiHZWr6Izc&ab_channel=GaryVee" target="_blank">How to Build a Personal Brand</a></h4>
+            <p>Gary Vaynerchuk's insights on building a strong personal brand.</p>
+          </div>
+          <div>
+            <img src="https://img.youtube.com/vi/8rtwwfxYCAo/0.jpg" alt="How to Raise Capital for Your Startup">
+            <h4><a href="https://www.youtube.com/watch?v=8rtwwfxYCAo&ab_channel=Valuetainment" target="_blank">How to Raise Capital for Your Startup</a></h4>
+            <p>Strategies and tips on raising capital for your startup.</p>
+          </div>
+          <div>
+            <img src="https://img.youtube.com/vi/rJzbMrV_s6w/0.jpg" alt="Sales Techniques for Entrepreneurs">
+            <h4><a href="https://www.youtube.com/watch?v=rJzbMrV_s6w&ab_channel=SellIt" target="_blank">Sales Techniques for Entrepreneurs</a></h4>
+            <p>Learn effective sales techniques to boost your business.</p>
+          </div>
+        </div>
+        <div class="learning-item">
+          <div class="learning-item">
+            <h3>Articles</h3>
+            <div>
+              <h4><a href="https://www.entrepreneur.com/article/297899" target="_blank">How to Write a Business Plan</a></h4>
+              <p>A step-by-step guide on writing an effective business plan.</p>
+            </div>
+            <div>
+              <h4><a href="https://hbr.org/2020/09/how-to-build-a-successful-business-model" target="_blank">Building a Successful Business Model</a></h4>
+              <p>Harvard Business Review's insights on creating a sustainable business model.</p>
+            </div>
+            <div>
+              <h4><a href="https://www.forbes.com/sites/forbescoachescouncil/2018/03/05/12-key-strategies-to-achieving-a-work-life-balance/" target="_blank">Achieving Work-Life Balance</a></h4>
+              <p>Strategies for entrepreneurs to maintain a healthy work-life balance.</p>
+            </div>
+            <div>
+              <h4><a href="https://www.shopify.com/blog/marketing-strategy" target="_blank">Essential Marketing Strategies</a></h4>
+              <p>Effective marketing strategies to promote your business and attract customers.</p>
+            </div>
+            <div>
+              <h4><a href="https://www.inc.com/guides/2010/04/startup-financing.html" target="_blank">Startup Financing Options</a></h4>
+              <p>An overview of financing options available for startups and small businesses.</p>
+            </div>
+            <div>
+              <h4><a href="https://www.bplans.com/business-planning/how-to-create-a-sales-forecast/" target="_blank">Creating a Sales Forecast</a></h4>
+              <p>How to create accurate sales forecasts for your business.</p>
+            </div>
+            <div>
+              <h4><a href="https://www.fastcompany.com/90456617/how-to-create-a-winning-business-strategy" target="_blank">Creating a Winning Business Strategy</a></h4>
+              <p>Tips on developing a competitive business strategy.</p>
+            </div>
+            <div>
+              <h4><a href="https://www.forbes.com/sites/theyec/2020/02/04/the-importance-of-financial-literacy-for-entrepreneurs/" target="_blank">Financial Literacy for Entrepreneurs</a></h4>
+              <p>Understanding financial principles to make informed business decisions.</p>
+            </div>
+            <div>
+              <h4><a href="https://www.entrepreneur.com/article/321346" target="_blank">The Importance of Networking for Entrepreneurs</a></h4>
+              <p>Why networking is crucial for entrepreneurial success and how to do it effectively.</p>
+            </div>
+            <div>
+              <h4><a href="https://www.mckinsey.com/business-functions/strategy-and-corporate-finance/our-insights/the-strategy-and-corporate-finance-blog/10-tips-for-leading-companies-out-of-crisis" target="_blank">Leading Companies Out of Crisis</a></h4>
+              <p>McKinsey's tips on how to lead a company out of a crisis.</p>
+            </div>
+            <div>
+              <h4><a href="https://www.hubspot.com/marketing-plan-template" target="_blank">Creating a Marketing Plan</a></h4>
+              <p>A comprehensive template to help you create an effective marketing plan.</p>
+            </div>
+            <div>
+              <h4><a href="https://www.forbes.com/sites/forbescoachescouncil/2021/01/11/ten-ways-to-create-a-strong-business-culture/" target="_blank">Creating a Strong Business Culture</a></h4>
+              <p>Ways to develop and maintain a strong, positive business culture.</p>
+            </div>
+            <div>
+              <h4><a href="https://hbr.org/2017/04/the-best-ways-for-entrepreneurs-to-fund-their-businesses" target="_blank">Best Ways to Fund Your Business</a></h4>
+              <p>Harvard Business Review's insights on various ways to fund a business.</p>
+            </div>
+            <div>
+              <h4><a href="https://www.sba.gov/business-guide/plan-your-business/market-research-competitive-analysis" target="_blank">Market Research and Competitive Analysis</a></h4>
+              <p>A guide from the SBA on conducting market research and competitive analysis.</p>
+            </div>
+            <div>
+              <h4><a href="https://www.inc.com/guides/2010/05/how-to-design-your-office-space.html" target="_blank">Designing Your Office Space</a></h4>
+              <p>Tips on creating a productive and inspiring office space.</p>
+            </div>
+            <div>
+              <h4><a href="https://www.forbes.com/sites/theyec/2020/08/17/five-ways-to-scale-your-business-efficiently/" target="_blank">Scaling Your Business Efficiently</a></h4>
+              <p>Five strategies for efficiently scaling your business.</p>
+            </div>
+            <div>
+              <h4><a href="https://www.entrepreneur.com/article/240039" target="_blank">Using Social Media to Grow Your Business</a></h4>
+              <p>How to leverage social media platforms to expand your business reach.</p>
+            </div>
+
+          </div>          
+        </div>
+      </div>
+    </section>    
+
+  </div>
+
+  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+    <p class="w3-medium">Contact us: info@freelancerhub.com</p>
+  </footer>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const response = await fetch('http://localhost:3001/api/projects', {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+        const projects = await response.json();
+        const projectList = document.querySelector('.project-list ul');
+        projectList.innerHTML = '';
+
+        projects.forEach(project => {
+            const projectElement = document.createElement('li');
+            projectElement.innerHTML = `${project.title} - <a href="#" onclick="viewProjectDetails('${project._id}', '${project.title}', '${project.description}', '${project.skills}', '${project.budget}', '${project.deadline}')">View Details</a>`;
+            projectList.appendChild(projectElement);
+        });
+    } catch (error) {
+        console.error('Error fetching projects:', error);
+    }
+});
+
+function viewProjectDetails(id, title, description, skills, budget, deadline) {
+    localStorage.setItem('projectId', id);
+    localStorage.setItem('projectTitle', title);
+    localStorage.setItem('projectDescription', description);
+    localStorage.setItem('projectSkills', skills);
+    localStorage.setItem('projectBudget', budget);
+    localStorage.setItem('projectDeadline', deadline);
+    console.log('Project details saved to localStorage:', {
+        id, title, description, skills, budget, deadline
+    });
+    window.location.href = 'project-details.html';
+}
+
+
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const response = await fetch('http://localhost:3001/api/applications', {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+        const applications = await response.json();
+        const applicationsList = document.getElementById('applicationsList');
+        applicationsList.innerHTML = '';
+
+        applications.forEach(application => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                ${application.applicantName} - <a href="#" onclick="viewApplicationDetails('${application.jobId}', '${application.applicantName}', '${application.applicantEmail}', '${application.coverLetter}')">Review</a>
+            `;
+            applicationsList.appendChild(li);
+        });
+    } catch (error) {
+        console.error('Error fetching applications:', error);
+    }
+});
+
+function viewApplicationDetails(jobId, applicantName, applicantEmail, coverLetter) {
+    localStorage.setItem('applicationJobId', jobId);
+    localStorage.setItem('applicationApplicantName', applicantName);
+    localStorage.setItem('applicationApplicantEmail', applicantEmail);
+    localStorage.setItem('applicationCoverLetter', coverLetter);
+    console.log('Application details saved to localStorage:');
+    console.log({
+        jobId,
+        applicantName,
+        applicantEmail,
+        coverLetter
+    });
+    window.location.href = 'application-details.html';
+}
+
+</script>
+
+  
+</body>
+</html>
+</html>

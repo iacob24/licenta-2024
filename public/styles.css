@@ -1,0 +1,194 @@
+body, h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", sans-serif;
+}
+
+.w3-row-padding img {
+  margin-bottom: 12px;
+}
+
+.w3-sidebar {
+  width: 120px;
+  background: #222;
+}
+
+#main {
+  margin-left: 140px; 
+}
+
+@media only screen and (max-width: 600px) {
+  #main {
+    margin-left: 0;
+  }
+}
+
+a.w3-bar-item {
+  transition: background-color 0.3s;
+}
+
+a.w3-bar-item:hover {
+  background-color: #444;
+}
+
+button.w3-button {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button.w3-button:hover {
+  background-color: #444;
+  color: #fff;
+}
+
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+.form-container .cancel {
+  background-color: red;
+}
+
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+.job-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.w3-card-4 {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.learning-hub-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+.learning-item {
+  flex: 1 1 calc(50% - 20px);
+  margin: 10px;
+  background: #333;
+  padding: 20px;
+  border-radius: 5px;
+}
+.learning-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+.learning-item h4 {
+  color: #fff;
+}
+.learning-item p {
+  color: #bbb;
+}
+.learning-item a {
+  color: #fff;
+  text-decoration: none;
+}
+.learning-item h3 {
+  color: #fff;
+}
+.dashboard-item {
+  margin-bottom: 32px;
+}
+.w3-card-4 {
+  margin-bottom: 16px;
+}
+.learning-item {
+  margin-bottom: 24px;
+}
+.learning-item div {
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: black;
+  margin-bottom: 16px;
+}
+.learning-item h4 {
+  margin: 0 0 8px 0;
+}
+.learning-item p {
+  margin: 0;
+}
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+}
+.upload-form {
+  width: 100%;
+  max-width: 600px;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+.upload-form input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.upload-form button {
+  width: 100%;
+}
+.message {
+  border-bottom: 1px solid #ddd;
+  padding: 8px 0;
+}
+.message:last-child {
+  border-bottom: none;
+}
+.message img {
+  border-radius: 50%;
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+}
+.message-sender {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.message-text {
+  margin: 0;
+}
+.message-form input[type="text"] {
+  width: calc(100% - 50px);
+  display: inline-block;
+  margin-right: 10px;
+}
+.message-form button {
+  width: 40px;
+  padding: 10px;
+}
